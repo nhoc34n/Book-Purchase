@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Book Purchase System</title>
+    <link rel="stylesheet" type="text/css" href="style1.css">
+  </head>
+  <style>
+    body {
+      background-image: url('images/03.jpg');
+    }
+    button {
+	
+      display: block;
+      margin: auto;
+    }
+    .book-list {
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      margin-top: 20px;
+    }
+    .book-list img {
+      width: 150px;
+      height: 200px;
+      object-fit: cover;
+    }
+	.name{
+	 background-color: rgba(0,0,0,0.7);
+			box-shadow: inset -3px -3px rgba(0,0,0,0.5);
+      padding: 10px;
+      border-radius: 500px;
+      text-align: center;
+	  color: white;
+	}
+    .price-box {
+      background-color: #e3c093;
+      padding: 10px;
+      border-radius: 500px;
+      text-align: center;
+    }
+    .price-box p {
+      font-weight: bold;
+    }
+    .form-container {
+      margin-top: 100px; 
+    }
+  </style>
+  <body>
+    <div class= "box1">
+      <h1>Welcome to Online Book Purchase System</h1>
+    </div>
+    <div class="book-list">
+      <div>
+        <img src="images/b1.jpg" >
+        <div class="name">
+          <h3>The Art Of War</h3>
+		  <p>by Sun Tzu</p>
+		  </div>
+          <div class="price-box"><p>$27</p></div>
+          
+        
+      </div>
+      <div>
+        <img src="images/b5.jpg" >
+      <div class="name">
+          <h3>Muhammad</h3>
+		  <p>by Martin Lings</p>
+		  </div>
+          <div class="price-box"><p>$17</p></div>
+      </div>
+      <div>
+        <img src="images/b3.jpg" >
+        <div class="name">
+          <h3>Hansel & Gretel</h3>
+		  <p>by Neil Gaiman</p>
+		  </div>
+          <div class="price-box"><p>$30</p></div>
+      </div>
+    </div>
+    <div class="form-container">
+      <div class="container">
+        <h2>Form</h2>
+        <form action="process1.php" method="post">
+          <div class="form-group">
+            <label for="book-title">Book Title:</label>
+            <input type="text" id="book-title" name="book-title" required>
+          </div>
+          <div class="form-group">
+            <label for="book-author">Author:</label>
+            <input type="text" id="book-author" name="book-author" required>
+          </div>
+          <div class="form-group">
+            <label for="book-price">Price:</label>
+            <input type="text" id="book-price" name="book-price" required>
+          </div>
+          <div class="form-group">
+            <label for="quantity">Quantity:</label>
+            <input type="number" id="quantity" name="quantity" min="1" max="50" required>
+          </div>
+          <div class="form-group">
+            <label for="total-price">Total Price:</label>
+            <input type="text" id="total-price" name="total-price" readonly>
+          </div>
+          <div class="form-group">
+            <button type="submit" class="btn">Buy Now</button>
+          </div>
+        </form>
+ 
+        <a href="adminlogin1.html">Admin Login</a>
+      </div>
+    </div>
+  </body>
+</html>

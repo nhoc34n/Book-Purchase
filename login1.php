@@ -1,0 +1,61 @@
+<?php
+// Start the session
+session_start();
+
+// Connect to the MySQL database using PDO
+try {
+    $dbh = new PDO('mysql:host=localhost;dbname=obs', 'root', '');
+    $dbh->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+} catch (PDOException $e) {
+    echo "Connection failed: " . $e->getMessage();
+    exit;
+}
+
+
+//echo "login1 is connect";
+// Check if the login form has been submitted
+if (isset($_POST['submit'])) {
+    // Retrieve the user's username and password from the form
+    $username = $_POST['username'];
+    $password = $_POST['password'];
+
+    // Debugging statement - check if the form values are being passed correctly
+    var_dump($_POST);
+
+    // Query the database to check if the username and password match any records
+    $stmt = $dbh->prepare("SELECT * FROM user WHERE username=:username");
+    $stmt->execute(array(':username' => $username));
+    $row = $stmt->fetch(PDO::FETCH_ASSOC);
+
+    // Debugging statement - check if the query is returning any results
+    var_dump($row);
+    echo "submit is connected";
+    // Check if the query returned any results
+    if ($row['username']==$username && $row['password']==$password) {
+        // Set a session variable to indicate that the user is logged in
+        $_SESSION['username'] = $username;
+
+        // Debugging statement - check if the session variable is being set correctly
+        var_dump($_SESSION['username']);
+
+        // Redirect the user to the home page
+        echo "<table>";
+        echo "<thead><tr><th>id</th><th>price</th><th>quantity</th></tr></thead>";
+        echo "<tbody>";
+        // foreach ($row as $row) {
+        //     echo "<tr><td>".$row['id']."</td><td>".$row['price']."</td><td>".$row['quantity']."</td></tr>";
+        // }
+		
+        echo "</tbody>";
+        echo "</table>";
+        
+    } else {
+        echo "<br></br>Wrong input. Please try again(mahfuz7055,7055)";
+        //header('Location: adminlogin1.html');
+        // exit;
+    }
+}
+else{
+    echo "not in block";
+}
+?>
